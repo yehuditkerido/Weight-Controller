@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: weight-controller-metrics
+  labels:
+    app.kubernetes.io/name: weight-controller
+    app.kubernetes.io/component: controller
+spec:
+  selector:
+    app: weight-controller
+  ports:
+    - name: metrics
+      port: 8080
+      targetPort: metrics
+      protocol: TCP

@@ -1,0 +1,20 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: weight-controller
+  labels:
+    app.kubernetes.io/name: weight-controller
+    app.kubernetes.io/component: controller
+rules:
+  - apiGroups: ["inference.opendatahub.io"]
+    resources: ["externalmodels"]
+    verbs: ["get", "list", "watch", "patch"]
+  - apiGroups: ["inference.opendatahub.io"]
+    resources: ["externalmodels/status"]
+    verbs: ["get", "update", "patch"]
+  - apiGroups: ["inference.opendatahub.io"]
+    resources: ["externalproviders"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "patch"]
